@@ -1,6 +1,6 @@
 print("hola mundo")
-
-mi_nombre = "mateo"
+mi_nombre= input("ingresa tu nombre: ")
+print("hola " + mi_nombre)
 print(mi_nombre)
 
 numero1 = 1
