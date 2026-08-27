@@ -1,0 +1,9 @@
+print("hola mundo")
+
+mi_nombre = "mateo"
+print(mi_nombre)
+
+numero1 = 1
+numero2 = 2
+
+print(numero1 + numero2)
