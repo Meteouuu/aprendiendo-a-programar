@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hoja de vida | Estudiante de Ingeniería en IA</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+		:root {
+			--ink: #17212b;
+			--muted: #61707d;
+			--paper: #f4f7f5;
+			--white: #ffffff;
+			--mint: #b7e4d2;
+			--green: #176b56;
+			--orange: #ef8b58;
+			--line: #dce8e1;
+		}
+
+		* { box-sizing: border-box; }
+		body {
+			margin: 0;
+			color: var(--ink);
+			background: var(--paper) radial-gradient(#d4e8de 1px, transparent 1px);
+			background-size: 22px 22px;
+			font-family: 'DM Sans', sans-serif;
+			line-height: 1.6;
+		}
+
+		.page {
+			width: min(1120px, calc(100% - 32px));
+			margin: 32px auto;
+			background: var(--white);
+			box-shadow: 0 18px 50px rgba(23, 33, 43, .09);
+		}
+
+		header {
+			position: relative;
+			overflow: hidden;
+			padding: 52px 64px 44px;
+			background: var(--green);
+			color: white;
+		}
+		header::after {
+			content: '';
+			position: absolute;
+			right: -80px;
+			top: -120px;
+			width: 330px;
+			height: 330px;
+			border: 45px solid rgba(255,255,255,.12);
+			border-radius: 50%;
+		}
+		.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 280px; gap: 44px; align-items: center; }
+		.hero-visual { position: relative; min-height: 220px; }
+		.hero-visual img { display: block; width: 100%; height: 220px; object-fit: cover; border: 8px solid rgba(255,255,255,.18); border-radius: 3px; filter: saturate(.8); }
+		.visual-label { position: absolute; right: -14px; bottom: -17px; padding: 11px 14px; background: var(--orange); color: white; font-family: 'Space Grotesk', sans-serif; font-size: .78rem; font-weight: 700; text-transform: uppercase; }
+		.eyebrow {
+			margin: 0 0 12px;
+			color: var(--mint);
+			font-size: .78rem;
+			font-weight: 700;
+			letter-spacing: .15em;
+			text-transform: uppercase;
+		}
+		h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+		h1 {
+			max-width: 680px;
+			margin: 0;
+			font-size: clamp(2.5rem, 6vw, 5rem);
+			line-height: .98;
+			letter-spacing: -.05em;
+		}
+		.headline {
+			max-width: 590px;
+			margin: 20px 0 0;
+			color: #d8f1e5;
+			font-size: 1.15rem;
+		}
+		.contact-bar {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px 24px;
+			margin-top: 32px;
+			color: white;
+			font-size: .94rem;
+		}
+		.contact-bar span { display: inline-flex; align-items: center; gap: 8px; }
+		.contact-bar b { color: var(--mint); }
+		.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+		.action { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border: 1px solid rgba(255,255,255,.5); color: white; text-decoration: none; font-size: .82rem; font-weight: 700; }
+		.action.primary { border-color: var(--orange); background: var(--orange); }
+
+		main { display: grid; grid-template-columns: 1.45fr .8fr; }
+		.content { padding: 48px 56px 58px 64px; }
+		.sidebar { padding: 48px 48px 58px 34px; background: #f7fbf8; border-left: 1px solid var(--line); }
+		section + section { margin-top: 42px; }
+		.section-title {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+			margin: 0 0 22px;
+			color: var(--green);
+			font-size: 1.25rem;
+			letter-spacing: -.02em;
+		}
+		.section-title::after { content: ''; height: 1px; flex: 1; background: var(--line); }
+		.section-title::before { content: ''; width: 9px; height: 9px; background: var(--orange); border-radius: 2px; transform: rotate(45deg); }
+		p { margin: 0; color: var(--muted); }
+		.profile { font-size: 1.06rem; }
+
+		.timeline { display: grid; gap: 25px; }
+		.entry { position: relative; padding-left: 24px; border-left: 2px solid var(--mint); }
+		.entry::before { content: ''; position: absolute; left: -6px; top: 5px; width: 10px; height: 10px; background: var(--orange); border-radius: 50%; }
+		.entry h3 { margin: 0; font-size: 1.05rem; }
+		.entry .meta { margin: 3px 0 8px; color: var(--green); font-size: .86rem; font-weight: 700; }
+		.entry p { font-size: .94rem; }
+
+		.skill-group + .skill-group { margin-top: 27px; }
+		.skill-group h3 { margin: 0 0 11px; font-size: .94rem; }
+		.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+		.tag { padding: 6px 10px; border: 1px solid var(--line); border-radius: 4px; color: var(--green); background: white; font-size: .82rem; font-weight: 600; }
+		.tag i { margin-right: 5px; color: var(--orange); }
+		.language { margin-top: 14px; }
+		.language-row { display: flex; justify-content: space-between; font-size: .9rem; font-weight: 600; }
+		.meter { height: 7px; margin-top: 7px; background: #dcebe3; border-radius: 10px; }
+		.meter span { display: block; height: 100%; background: var(--orange); border-radius: inherit; }
+		.meter .b1 { width: 55%; }
+		.meter .native { width: 100%; }
+		.highlight { margin-top: 42px; padding: 22px; background: var(--mint); }
+		.highlight h3 { margin: 0 0 6px; font-size: 1rem; }
+		.highlight p { color: #285b4e; font-size: .9rem; }
+		.details { display: grid; gap: 14px; }
+		.detail { display: flex; gap: 12px; align-items: flex-start; }
+		.detail strong { display: block; font-size: .84rem; }
+		.detail span { color: var(--muted); font-size: .88rem; }
+		.icon { min-width: 29px; color: var(--orange); font-size: 1.2rem; font-weight: 700; }
+
+		footer { padding: 18px 64px; background: var(--ink); color: #b7c4cc; font-size: .8rem; }
+		@media (max-width: 760px) {
+			.page { width: 100%; margin: 0; }
+			header { padding: 42px 26px 34px; }
+			.hero-grid { display: block; }
+			.hero-visual { display: none; }
+			.contact-bar { display: grid; gap: 8px; }
+			main { display: block; }
+			.content, .sidebar { padding: 36px 26px; }
+			.sidebar { border-top: 1px solid var(--line); border-left: 0; }
+			footer { padding: 18px 26px; }
+		}
+		@media print {
+			body { background: white; }
+			.page { width: 100%; margin: 0; box-shadow: none; }
+		}
+	</style>
+</head>
+<body>
+	<div class="page">
+		<header>
+			<div class="hero-grid">
+				<div>
+					<p class="eyebrow">Hoja de vida · Perfil junior</p>
+					<h1>Mateo Rodriguez Peñaramda	</h1>
+					<p class="headline">Estudiante de Ingeniería en Inteligencia Artificial con mentalidad analítica y pasión por crear soluciones útiles con tecnología.</p>
+					<div class="contact-bar">
+						<span><b><i class="fa-solid fa-phone"></i></b> Tu teléfono</span>
+						<span><b><i class="fa-solid fa-envelope"></i></b> tu.correo@email.com</span>
+						<span><b><i class="fa-solid fa-location-dot"></i></b> Cúcuta, Norte de Santander</span>
+					</div>
+					<div class="actions">
+						<a class="action primary" href="mailto:tu.correo@email.com"><i class="fa-solid fa-paper-plane"></i> Contactarme</a>
+						<a class="action" href="#perfil"><i class="fa-solid fa-arrow-down"></i> Ver perfil</a>
+					</div>
+				</div>
+				<div class="hero-visual">
+					<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=85" alt="Placa electrónica que representa tecnología e inteligencia artificial">
+					<span class="visual-label">IA + propósito</span>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<div class="content">
+				<section id="perfil">
+					<h2 class="section-title">Perfil profesional</h2>
+					<p class="profile">Soy bachiller y estudiante de Ingeniería en Inteligencia Artificial, con formación técnica en Monitoreo Ambiental. Me caracterizo por aprender rápido, trabajar con responsabilidad y convertir problemas en procesos organizados. Busco una oportunidad para aportar mis conocimientos en programación, análisis de datos y seguimiento de procesos mientras continúo creciendo profesionalmente.</p>
+				</section>
+
+				<section>
+					<h2 class="section-title">Formación académica</h2>
+					<div class="timeline">
+						<article class="entry">
+							<h3>Ingeniería en Inteligencia Artificial</h3>
+							<div class="meta">En curso · Formación universitaria</div>
+							<p>Desarrollo de bases en programación, pensamiento lógico, datos y tecnologías emergentes.</p>
+						</article>
+						<article class="entry">
+							<h3>Técnico en Monitoreo Ambiental</h3>
+							<div class="meta">Título técnico</div>
+							<p>Conocimientos en observación, registro de información, seguimiento de indicadores y cuidado del entorno.</p>
+						</article>
+						<article class="entry">
+							<h3>Bachiller académico</h3>
+							<div class="meta">Educación media · Cúcuta</div>
+							<p>Formación integral con disposición para asumir nuevos retos y aprender de manera continua.</p>
+						</article>
+					</div>
+				</section>
+
+				<section>
+					<h2 class="section-title">Fortalezas</h2>
+					<div class="tags">
+						<span class="tag"><i class="fa-solid fa-brain"></i>Pensamiento lógico</span><span class="tag"><i class="fa-solid fa-bolt"></i>Aprendizaje rápido</span><span class="tag"><i class="fa-solid fa-shield-heart"></i>Responsabilidad</span><span class="tag"><i class="fa-solid fa-people-group"></i>Trabajo en equipo</span><span class="tag"><i class="fa-solid fa-comments"></i>Comunicación</span><span class="tag"><i class="fa-solid fa-arrows-rotate"></i>Adaptabilidad</span><span class="tag"><i class="fa-solid fa-magnifying-glass"></i>Atención al detalle</span>
+					</div>
+				</section>
+			</div>
+
+			<aside class="sidebar">
+				<section>
+					<h2 class="section-title">Datos</h2>
+					<div class="details">
+						<div class="detail"><div class="icon">18</div><div><strong>Edad</strong><span>18 años</span></div></div>
+						<div class="detail"><div class="icon">⌖</div><div><strong>Ubicación</strong><span>Cúcuta, Colombia</span></div></div>
+						<div class="detail"><div class="icon">◎</div><div><strong>Disponibilidad</strong><span>Abierto a oportunidades</span></div></div>
+					</div>
+				</section>
+
+				<section>
+					<h2 class="section-title">Competencias</h2>
+					<div class="skill-group"><h3>Programación</h3><div class="tags"><span class="tag"><i class="fa-brands fa-python"></i>Python</span><span class="tag"><i class="fa-solid fa-code"></i>Algoritmos</span><span class="tag"><i class="fa-solid fa-diagram-project"></i>Lógica</span><span class="tag"><i class="fa-solid fa-gears"></i>Automatización</span></div></div>
+					<div class="skill-group"><h3>Herramientas y enfoque</h3><div class="tags"><span class="tag">Análisis de datos</span><span class="tag">Documentación</span><span class="tag">Excel básico</span><span class="tag">Resolución de problemas</span></div></div>
+				</section>
+
+				<section>
+					<h2 class="section-title">Idiomas</h2>
+					<div class="language"><div class="language-row"><span>Español</span><span>Nativo</span></div><div class="meter"><span class="native"></span></div></div>
+					<div class="language"><div class="language-row"><span>Inglés</span><span>B1</span></div><div class="meter"><span class="b1"></span></div></div>
+				</section>
+
+				<div class="highlight"><h3>Lo que puedo aportar</h3><p>Curiosidad, compromiso y una base técnica que combina inteligencia artificial con conciencia ambiental.</p></div>
+			</aside>
+		</main>
+		<footer>Referencias disponibles a solicitud · Reemplaza los datos de contacto antes de enviarla.</footer>
+	</div>
+</body>
+</html>
